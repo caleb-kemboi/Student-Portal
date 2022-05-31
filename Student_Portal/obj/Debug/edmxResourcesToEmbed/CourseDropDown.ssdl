@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Student_PortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Student_Portal.dbo.Courses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseId" />
+      <PropertyRef Name="Course" />
+    </Key>
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Course" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Student_Portal.dbo.Unit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+      <PropertyRef Name="UnitName" />
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="UnitId" Type="int" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CourseId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Student_PortalModelStoreContainer">
+    <EntitySet Name="Courses" EntityType="Self.Courses" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Courses].[CourseId] AS [CourseId], 
+    [Courses].[Course] AS [Course]
+    FROM [dbo].[Courses] AS [Courses]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Unit" EntityType="Self.Unit" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Unit].[UnitId] AS [UnitId], 
+    [Unit].[UnitName] AS [UnitName], 
+    [Unit].[CourseId] AS [CourseId]
+    FROM [dbo].[Unit] AS [Unit]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
